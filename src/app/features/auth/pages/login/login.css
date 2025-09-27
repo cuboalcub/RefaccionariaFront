@@ -1,0 +1,98 @@
+html, body {
+  margin: 0;
+  padding: 0px;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* Contenedor principal dividido en 2 columnas */
+.login-container {
+  display: flex;       
+  height: 97vh;
+}
+
+/* Mitad izquierda (formulario) */
+.login-left {
+  flex: 1;                      
+  display: flex;                
+  flex-direction: column;        
+  justify-content: center;       
+  padding: 3rem;                 
+  background-color: #ffffff;     
+}
+
+.logo {
+  width: 150px;        
+  margin-bottom: 2rem; 
+}
+
+/* Título principal */
+.login-title {
+  font-size: 28px;     
+  font-weight: bold;   
+  margin-bottom: 1rem; 
+}
+
+/* Texto descriptivo */
+.login-description {
+  font-size: 14px;   
+  color: #555;       
+  margin-bottom: 2rem;
+}
+
+/* Labels de los campos de texto */
+.input-label {
+  font-weight: bold;       
+  margin-bottom: 0.5rem;   
+}
+
+/* Campos de texto (usuario y contraseña) */
+.input-field {
+  width: 100%;             
+  padding: 0.8rem;         
+  margin-bottom: 1.5rem;   
+  border: 1px solid #ccc;  
+  border-radius: 8px;      
+}
+
+/* Botón azul principal */
+.button-login {
+  background-color: #233387; 
+  color: #fff;               
+  padding: 0.8rem;
+  padding-right: 12px;
+  border: none;              
+  border-radius: 20px;        
+  cursor: pointer;           
+  font-size: 16px;
+  width: 140px; /* Ancho del botón xd, ignorar padding*/
+}
+
+/* Hover del botón (cambia a azul más oscuro) */
+.button-login:hover {
+  background-color: #092f57;
+}
+
+/* Mitad derecha (imagen de fondo) */
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0px;
+  margin: -8px; /* Con esto aumenta el tamaño de la imágen */
+  height: 103.1%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Imagen de la derecha */
+.login-img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0px;
+  display: block;
+}

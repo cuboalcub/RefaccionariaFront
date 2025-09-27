@@ -1,5 +1,5 @@
 import { Injectable, isDevMode } from '@angular/core';
-import { Environment } from '@/core/models/enviroment.model';
+import { environment } from '@/../enviroments/environment';
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'fatal';
 
@@ -15,10 +15,10 @@ interface LogEntry {
 export class LoggerService {
   private currentLevel: LogLevel;
 
-  constructor(
-    private env: Environment,
-  ) {
-    this.currentLevel = this.env.production ? 'warn' : (this.env.logging ? 'debug' : 'error');
+  constructor() {
+    this.currentLevel = environment.production
+      ? 'warn'
+      : (environment['logging'] ? 'debug' : 'error');
   }
 
   private shouldLog(level: LogLevel): boolean {
