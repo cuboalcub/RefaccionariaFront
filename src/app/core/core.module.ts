@@ -7,7 +7,7 @@ import { HttpErrorInterceptor } from "./interceptors/http-error.interceptor";
   providers: [
     {provide: ErrorHandler, useClass: GlobalErrorHandlerService},
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true}
-  ]
+  ],
 })
 
 export class CoreModule {}

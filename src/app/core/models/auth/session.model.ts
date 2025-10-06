@@ -1,34 +1,17 @@
-import { UserRole } from './enums/user-role.enum';
-import { User } from './user.model';
+import { LoginResponse } from './login-response.model';
 
 export class Session {
-  constructor(public user: User, public accessToken: string, public refreshToken?: string) {}
+  constructor(
+    public readonly accessToken: string,
+    public readonly refreshToken: string | null,
+    public readonly userId: string,
+    public readonly isAdmin: boolean,
+    public readonly isStaff: boolean
+  ) {}
 
-  toJSON(): any {
-    return {
-      user: { ...this.user },
-      accessToken: this.accessToken,
-      refreshToken: this.refreshToken,
-    };
-  }
-
-  static fromJSON(json: any): Session {
-    return new Session(
-      new User(json.user.id, json.user.name, json.user.role),
-      json.accessToken,
-      json.refreshToken
-    );
-  }
-
-  isSeller(): boolean {
-    return this.user.role === UserRole.Seller;
-  }
-
-  isAdmin(): boolean {
-    return this.user.role === UserRole.Admin;
-  }
-
-  isManager(): boolean {
-    return this.user.role === UserRole.Manager;
+  hasRole(role: 'admin' | 'staff'): boolean {
+    if (role === 'admin') return this.isAdmin;
+    if (role === 'staff') return this.isStaff;
+    return false;
   }
 }
