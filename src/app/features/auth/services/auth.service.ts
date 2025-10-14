@@ -6,6 +6,7 @@ import { SessionService } from '@/core/services/session.service';
 import { LoggerService } from '@/core/services/logger.service';
 import { Environment } from '@/core/models/enviroment.model';
 import { ENVIRONMENT } from '@/core/models/enviroment.token';
+import { ROUTES } from '@/core/constants/routes.constants';
 import { Session } from '@/core/models/auth/session.model';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +22,7 @@ export class AuthService {
   ) {}
 
   login(payload: LoginRequest): Observable<Session> {
-    const url = `${this.env.apiUrl}/auth/login`;
+    const url = `${this.env.apiUrl}${ROUTES['LOGIN']}`;
 
     this.logger.info('AuthService.login Sending login request', payload);
 
@@ -41,7 +42,7 @@ export class AuthService {
   }
 
   refreshToken(): Observable<Session> {
-    const url = `${this.env.apiUrl}/auth/refresh`;
+    const url = `${this.env.apiUrl}${ROUTES['REFRESH']}`;
     return this.http.post<LoginResponse>(url, { token: this.getSession()?.refreshToken }).pipe(
       map((response) => {
         const session = SessionMapper.fromLoginResponse(response);

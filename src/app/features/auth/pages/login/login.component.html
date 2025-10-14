@@ -5,8 +5,8 @@
 
     <h2 class="login-title">Login</h2>
     <p class="login-description">
-      Para ingresar necesita el usuario y la contraseña que el administrador o
-      el empleador le ha proporcionado
+      Para ingresar necesita el usuario y la contraseña que el administrador o el empleador le ha
+      proporcionado
     </p>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -18,10 +18,9 @@
         placeholder="Ingresa tu usuario"
         class="input-field"
       />
-      <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error">
-        El usuario es requerido
-      </div>
-
+      @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
+      <div class="error">El usuario es requerido</div>
+      }
       <label for="password" class="input-label">Contraseña</label>
       <input
         type="password"
@@ -30,26 +29,22 @@
         placeholder="Ingresa tu contraseña"
         class="input-field"
       />
-      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
-        La contraseña es requerida
-      </div>
+      @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+      <div class="error">La contraseña es requerida</div>
+      }
 
-      <button class="button-login" type="submit" [disabled]="loading">
-        {{ loading ? 'Ingresando...' : 'Ingresar' }}
+      <button class="button-login" type="submit" [disabled]="loading()">
+        @if (loading()) { Ingresando... } @else { Ingresar }
       </button>
     </form>
 
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
+    @if (errorMessage()) {
+    <div class="error-message">{{ errorMessage() }}</div>
+    }
   </div>
 
   <!-- Mitad derecha/imágen -->
   <div class="login-right">
-    <img
-      [src]="backgroundImagePath"
-      alt="login-img"
-      class="login-img"
-    />
+    <img [src]="backgroundImagePath" alt="login-img" class="login-img" />
   </div>
 </div>
