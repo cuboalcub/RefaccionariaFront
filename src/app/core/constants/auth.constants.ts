@@ -6,4 +6,5 @@ export const AUTH_MESSAGES = {
   LOGOUT: 'Session cleared from storage',
   REQUEST_WITH_TOKEN: 'Request with token added to header',
   REQUEST_WITHOUT_TOKEN: 'Request without token',
+  FORM_INVALID: 'Login form is invalid',
 };

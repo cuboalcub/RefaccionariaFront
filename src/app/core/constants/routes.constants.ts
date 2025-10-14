@@ -1,3 +1,9 @@
-export const ROUTES = {
+interface RoutesMap {
+  LOGIN: string;
+  REFRESH: string;
+}
+
+export const ROUTES: RoutesMap = {
   LOGIN: '/auth/login',
-} as const;
+  REFRESH: '/auth/refresh',
+} as const; 
